@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/prefect/',
   chainWebpack: config => {
     config.module
       .rule('md')
@@ -57,6 +58,9 @@ module.exports = {
   },
 
   configureWebpack: {
+    output: {
+      publicPath: '/prefect/'
+    },
     devtool: 'source-map',
     optimization: {
       splitChunks: {

@@ -255,7 +255,7 @@ let PrefectUI
 
 const initialize = async () => {
   try {
-    window.prefect_ui_settings = await fetch('/settings.json')
+    window.prefect_ui_settings = await fetch('/prefect/settings.json')
       .then(response => response.json())
       .then(data => data)
   } finally {

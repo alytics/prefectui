@@ -340,6 +340,7 @@ function scrollToHash(to) {
 
 const router = new Router({
   mode: 'history',
+  base: '/prefect/',
   routes,
   scrollBehavior(to) {
     if (to.hash) {
