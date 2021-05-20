@@ -16,7 +16,7 @@ COPY ./LICENSE LICENSE
 WORKDIR /app
 
 # Install dependencies
-RUN --mount=type=secret,id=FA_TOKEN cp /run/secrets/FA_TOKEN .npmrc
+RUN rm .npmrc
 RUN npm ci
 
 # Build static files
@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install jq -y
 
 # Copy the previously built static files to the nginx container
 COPY --from=ui /app/dist /var/www
+COPY --from=prefecthq/ui:core-0.14.19 /var/www/fonts/font-awesome.min.js /var/www/fonts/
 
 # Replace the default nginx config
 # with the one we've defined here
